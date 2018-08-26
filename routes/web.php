@@ -11,9 +11,11 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+Route::view('/', 'welcome');
 
 Route::post('statuses', 'StatusesController@store')
     ->name('statuses.store');

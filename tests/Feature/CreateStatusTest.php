@@ -59,7 +59,7 @@ class CreateStatusTest extends TestCase
         $response = $this->postJson(route('statuses.store'), ['body' => '']);
         //dd($response->getContent());
         //$response->assertSessionHasErrors('body');
-        $response->assertStatus(100);
+        $response->assertStatus(422);
         $response->assertJsonStructure([
             'message',
             'errors' => ['body']
