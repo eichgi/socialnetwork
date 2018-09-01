@@ -6,6 +6,7 @@
                 <div class="card border-0 bg-light">
                     <status-form></status-form>
                 </div>
+                <statuses-list></statuses-list>
             </div>
         </div>
     </div>

@@ -15,7 +15,10 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+window.EventBus = new Vue();
+
 Vue.component('status-form', require('./components/StatusForm.vue'));
+Vue.component('statuses-list', require('./components/StatusesList.vue'));
 
 const app = new Vue({
     el: '#app'
