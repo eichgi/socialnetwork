@@ -12,7 +12,7 @@ class StatusesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('index');
     }
 
     /**
@@ -22,7 +22,7 @@ class StatusesController extends Controller
      */
     public function index()
     {
-        //
+        return Status::latest()->paginate();
     }
 
     /**
