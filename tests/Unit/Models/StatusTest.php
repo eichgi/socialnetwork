@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Models;
 
+use App\Like;
 use App\Status;
 use App\User;
 use Tests\TestCase;
@@ -16,5 +17,30 @@ class StatusTest extends TestCase
     {
         $status = factory(Status::class)->create();
         $this->assertInstanceOf(User::class, $status->user);
+    }
+
+    function test_a_status_has_many_likes()
+    {
+        $status = factory(Status::class)->create();
+        factory(Like::class)->create(['status_id' => $status->id]);
+        $this->assertInstanceOf(Like::class, $status->likes->first());
+    }
+
+    function test_a_status_can_be_liked()
+    {
+        $status = factory(Status::class)->create();
+        $this->actingAs(factory(User::class)->create());
+        $status->like();
+        $this->assertEquals(1, $status->likes->count());
+    }
+
+    function test_a_status_can_be_liked_once()
+    {
+        $status = factory(Status::class)->create();
+        $this->actingAs(factory(User::class)->create());
+        $status->like();
+        $this->assertEquals(1, $status->likes->count());
+        $status->like();
+        $this->assertEquals(1, $status->fresh()->likes->count());
     }
 }
