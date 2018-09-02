@@ -26,5 +26,8 @@ Route::post('statuses', 'StatusesController@store')
 Route::post('/statuses/{status}/likes', 'StatusLikeController@store')
     ->name('statuses.likes.store')
     ->middleware('auth');
+Route::delete('/statuses/{status}/likes', 'StatusLikeController@destroy')
+    ->name('statuses.likes.destroy')
+    ->middleware('auth');
 
 Route::auth();

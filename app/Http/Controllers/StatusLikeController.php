@@ -75,11 +75,11 @@ class StatusLikeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param Status $status
+     * @return void
      */
-    public function destroy($id)
+    public function destroy(Status $status)
     {
-        //
+        $status->unlike();
     }
 }
