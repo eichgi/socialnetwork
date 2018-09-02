@@ -1,14 +1,17 @@
 <template>
     <div>
-        <form @submit.prevent="submit">
+        <form @submit.prevent="submit" v-if="isAuthenticated">
             <div class="card-body">
             <textarea v-model="body" class="form-control border-0 bg-light" name="body"
-                      placeholder="¿Qué estás pensando papi?"></textarea>
+                      :placeholder="`¿Qué estás pensando ${currentUser.name}?`"></textarea>
             </div>
             <div class="card-footer">
                 <button id="create-status" class="btn btn-primary">Publicar</button>
             </div>
         </form>
+        <div class="card-body" v-else>
+            <a href="/login">Debes hacer login</a>
+        </div>
     </div>
 </template>
 
@@ -19,6 +22,7 @@
                 body: '',
             }
         },
+        //mixins: [auth],
         methods: {
             submit() {
                 axios.post('/statuses', {body: this.body})
