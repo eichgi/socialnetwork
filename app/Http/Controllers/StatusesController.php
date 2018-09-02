@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\StatusResource;
 use App\Status;
 use Illuminate\Http\Request;
 
@@ -18,11 +19,11 @@ class StatusesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
-        return Status::latest()->paginate();
+        return StatusResource::collection(Status::latest()->paginate());
     }
 
     /**
@@ -51,7 +52,8 @@ class StatusesController extends Controller
             'user_id' => auth()->id()
         ]);
 
-        return response()->json(['body' => $status->body]);
+        //return response()->json(['body' => $status->body]);
+        return StatusResource::make($status);
     }
 
     /**
