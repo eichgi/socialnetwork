@@ -15,11 +15,13 @@ class StatusResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->resource->id,
             'body' => $this->resource->body,
             'user_name' => $this->user->name,
             'user_avatar' => 'https://aprendible.com/images/default-avatar.jpg',
             //'ago' => $this->created_at->diffForHumans(),
-            'created_at' => $this->created_at
+            'created_at' => $this->created_at,
+            'is_liked' => $this->isLiked(),
         ];
     }
 }

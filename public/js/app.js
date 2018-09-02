@@ -14298,7 +14298,7 @@ module.exports = function normalizeComponent (
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(53);
+module.exports = __webpack_require__(54);
 
 
 /***/ }),
@@ -14307,7 +14307,7 @@ module.exports = __webpack_require__(53);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_auth__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_auth__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mixins_auth__);
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -47940,7 +47940,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -47951,6 +47951,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -47988,6 +47991,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             console.log(status);
             _this.statuses.unshift(status);
         });
+    },
+
+    methods: {
+        like: function like(status) {
+            axios.post('/statuses/' + status.id + '/likes').then(function (res) {
+                status.is_liked = true;
+            });
+        }
     }
 });
 
@@ -48029,7 +48040,22 @@ var render = function() {
           _c("p", {
             staticClass: "card-text text-secondary",
             domProps: { textContent: _vm._s(status.body) }
-          })
+          }),
+          _vm._v(" "),
+          status.is_liked
+            ? _c("button", [_vm._v("TE GUSTA")])
+            : _c(
+                "button",
+                {
+                  attrs: { dusk: "like-btn" },
+                  on: {
+                    click: function($event) {
+                      _vm.like(status)
+                    }
+                  }
+                },
+                [_vm._v("ME GUSTA")]
+              )
         ])
       ])
     })
@@ -48047,15 +48073,6 @@ if (false) {
 
 /***/ }),
 /* 53 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 54 */,
-/* 55 */,
-/* 56 */,
-/* 57 */
 /***/ (function(module, exports) {
 
 var user = document.head.querySelector('meta[name="user"]');
@@ -48079,6 +48096,12 @@ module.exports = {
         }
     }
 };
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
