@@ -22,6 +22,7 @@ class StatusResource extends JsonResource
             //'ago' => $this->created_at->diffForHumans(),
             'created_at' => $this->created_at,
             'is_liked' => $this->isLiked(),
+            'likes_count' => $this->likesCount(),
         ];
     }
 }

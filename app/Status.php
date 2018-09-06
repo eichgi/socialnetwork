@@ -38,4 +38,9 @@ class Status extends Model
             ])
             ->delete();
     }
+
+    public function likesCount()
+    {
+        return $this->likes()->count();
+    }
 }

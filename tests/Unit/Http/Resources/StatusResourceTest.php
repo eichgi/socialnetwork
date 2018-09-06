@@ -30,5 +30,6 @@ class StatusResourceTest extends TestCase
         //dd($statusResource['created_at']->format('d-m-y'));
         $this->assertEquals($status->created_at->format('d/m/Y'), $statusResource['created_at']->format('d/m/Y'));
         $this->assertEquals(false, $statusResource['is_liked']);
+        $this->assertEquals(0, $statusResource['likes_count']);
     }
 }
