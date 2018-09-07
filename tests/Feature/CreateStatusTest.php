@@ -18,9 +18,8 @@ class CreateStatusTest extends TestCase
     {
         //$this->withoutExceptionHandling();
 
-        $response = $this->post(route('statuses.store'), ['body' => 'Mi primer status']);
-        //dd($response);
-        $response->assertRedirect('login');
+        $response = $this->postJson(route('statuses.store'), ['body' => 'Mi primer status']);
+        $response->assertStatus(401);
     }
 
     /**

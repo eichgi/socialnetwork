@@ -30,4 +30,9 @@ Route::delete('/statuses/{status}/likes', 'StatusLikeController@destroy')
     ->name('statuses.likes.destroy')
     ->middleware('auth');
 
+
+Route::post('/statuses/{status}/comments', 'StatusCommentsController@store')
+    ->name('statuses.comments.store')
+    ->middleware('auth');
+
 Route::auth();
