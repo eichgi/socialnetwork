@@ -1,5 +1,6 @@
 <?php
 
+use App\Status;
 use App\User;
 use Faker\Generator as Faker;
 
@@ -9,5 +10,8 @@ $factory->define(App\Comment::class, function (Faker $faker) {
             return factory(User::class)->create();
         },
         'body' => $faker->paragraph,
+        'status_id' => function () {
+            return factory(Status::class)->create();
+        }
     ];
 });

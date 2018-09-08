@@ -23,12 +23,8 @@ class CommentResourceTest extends TestCase
         $comment = factory(Status::class)->create();
         $commentResource = CommentResource::make($comment)->resolve();
 
-        //$this->assertEquals($comment->id, $commentResource['id']);
         $this->assertEquals($comment->body, $commentResource['body']);
-        /*$this->assertEquals($comment->user->name, $commentResource['user_name']);
+        $this->assertEquals($comment->user->name, $commentResource['user_name']);
         $this->assertEquals('https://aprendible.com/images/default-avatar.jpg', $commentResource['user_avatar']);
-        $this->assertEquals($comment->created_at->format('d/m/Y'), $commentResource['created_at']->format('d/m/Y'));
-        $this->assertEquals(false, $commentResource['is_liked']);
-        $this->assertEquals(0, $commentResource['likes_count']);*/
     }
 }

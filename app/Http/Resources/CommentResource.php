@@ -15,6 +15,8 @@ class CommentResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'user_name' => $this->user->name,
+            'user_avatar' => 'https://aprendible.com/images/default-avatar.jpg',
             'body' => $this->body,
         ];
     }
