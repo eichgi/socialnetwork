@@ -36,7 +36,7 @@
         data() {
             return {
                 newComment: '',
-                comments: [],
+                comments: this.status.comments,
             }
         },
         props: {

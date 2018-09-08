@@ -48134,7 +48134,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     data: function data() {
         return {
             newComment: '',
-            comments: []
+            comments: this.status.comments
         };
     },
 

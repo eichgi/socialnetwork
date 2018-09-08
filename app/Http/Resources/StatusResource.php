@@ -23,6 +23,7 @@ class StatusResource extends JsonResource
             'created_at' => $this->created_at,
             'is_liked' => $this->isLiked(),
             'likes_count' => $this->likesCount(),
+            'comments' => CommentResource::collection($this->comments),
         ];
     }
 }
