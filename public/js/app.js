@@ -47812,7 +47812,8 @@ var render = function() {
                 attrs: {
                   name: "body",
                   placeholder:
-                    "¿Qué estás pensando " + _vm.currentUser.name + "?"
+                    "¿Qué estás pensando " + _vm.currentUser.name + "?",
+                  required: ""
                 },
                 domProps: { value: _vm.body },
                 on: {
@@ -48083,7 +48084,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48172,6 +48173,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/statuses/' + this.status.id + '/comments', { body: this.newComment }).then(function (res) {
                 _this.comments.push(res.data.data);
                 _this.newComment = '';
+            }).catch(function (error) {
+                console.log(error.response.data);
             });
         }
     }
@@ -48489,7 +48492,8 @@ var render = function() {
                       attrs: {
                         name: "comment",
                         rows: "1",
-                        placeholder: "Escribe un comentario..."
+                        placeholder: "Escribe un comentario...",
+                        required: ""
                       },
                       domProps: { value: _vm.newComment },
                       on: {

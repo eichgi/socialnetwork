@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Comment;
 use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -47,15 +48,28 @@ class CreateStatusTest extends TestCase
         ]);
     }
 
-    /**
-     * @test
-     */
-    public function a_status_requires_a_body()
+    public function test_a_status_requires_a_body()
     {
         $user = factory(User::class)->create();
         $this->actingAs($user);
 
         $response = $this->postJson(route('statuses.store'), ['body' => '']);
+        //dd($response->getContent());
+        //$response->assertSessionHasErrors('body');
+        $response->assertStatus(422);
+        $response->assertJsonStructure([
+            'message',
+            'errors' => ['body']
+        ]);
+    }
+
+    public function test_a_comment_requires_a_body()
+    {
+        $status = factory(Comment::class)->create();
+        $user = factory(User::class)->create();
+        $this->actingAs($user);
+
+        $response = $this->postJson(route('statuses.comments.store', $status), ['body' => '']);
         //dd($response->getContent());
         //$response->assertSessionHasErrors('body');
         $response->assertStatus(422);

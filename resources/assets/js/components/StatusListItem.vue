@@ -36,7 +36,7 @@
                          :alt="currentUser.user_name"/>
                     <div class="input-group">
                         <textarea class="form-control border-0 shadow-sm" name="comment" v-model="newComment"
-                                  rows="1" placeholder="Escribe un comentario..."></textarea>
+                                  rows="1" placeholder="Escribe un comentario..." required></textarea>
                         <div class="input-group-append">
                             <button class="btn btn-primary" dusk="comment-btn">Enviar</button>
                         </div>
@@ -72,6 +72,9 @@
                     .then(res => {
                         this.comments.push(res.data.data);
                         this.newComment = '';
+                    })
+                    .catch(error => {
+                        console.log(error.response.data);
                     });
             },
         }
