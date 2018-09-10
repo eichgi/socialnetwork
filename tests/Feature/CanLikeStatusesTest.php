@@ -26,32 +26,23 @@ class CanLikeStatusesTest extends TestCase
         $response->assertStatus(401);
     }
 
-    public function test_an_authenticated_user_can_like_statuses()
+    public function test_an_authenticated_user_can_like_unlike_statuses()
     {
-        $this->withoutExceptionHandling();
+        //$this->withoutExceptionHandling();
         $user = factory(User::class)->create();
-        //$this->status = factory(Status::class)->create();
+
+        $this->assertCount(0, $this->status->likes);
 
         $this->actingAs($user)->postJson(route('statuses.likes.store', $this->status));
-        $this->assertDatabaseHas('likes', [
-            'user_id' => $user->id,
-            'status_id' => $this->status->id,
-        ]);
-    }
 
-    public function test_an_authenticated_user_can_unlike_statuses()
-    {
-        $this->withoutExceptionHandling();
-        $user = factory(User::class)->create();
-        $this->actingAs($user)->postJson(route('statuses.likes.store', $this->status));
-        $this->assertDatabaseHas('likes', [
-            'user_id' => $user->id,
-            'status_id' => $this->status->id,
-        ]);
+        $this->assertCount(1, $this->status->fresh()->likes);
+
+        $this->assertDatabaseHas('likes', ['user_id' => $user->id,]);
+
         $this->actingAs($user)->deleteJson(route('statuses.likes.destroy', $this->status));
-        $this->assertDatabaseMissing('likes', [
-            'user_id' => $user->id,
-            'status_id' => $this->status->id,
-        ]);
+
+        $this->assertCount(0, $this->status->fresh()->likes);
+
+        $this->assertDatabaseMissing('likes', ['user_id' => $user->id,]);
     }
 }
