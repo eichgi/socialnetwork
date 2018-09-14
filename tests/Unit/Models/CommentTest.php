@@ -4,6 +4,7 @@ namespace Tests\Unit\Models;
 
 use App\Comment;
 use App\Like;
+use App\Traits\HasLikes;
 use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -25,55 +26,10 @@ class CommentTest extends TestCase
         $this->assertInstanceOf(User::class, $comment->user);
     }
 
-    function test_a_comment_morph_many_likes()
+    public function test_a_comment_model_must_use_the_trait_has_likes()
     {
-        $comment = factory(Comment::class)->create();
-        factory(Like::class)->create([
-            'likeable_id' => $comment->id,
-            'likeable_type' => get_class($comment),
-        ]);
-        $this->assertInstanceOf(Like::class, $comment->likes->first());
-    }
+        $uses = class_uses(Comment::class);
 
-    function test_a_comment_can_be_liked_and_unlike()
-    {
-        $comment = factory(Comment::class)->create();
-        $this->actingAs(factory(User::class)->create());
-        $comment->like();
-        $this->assertEquals(1, $comment->fresh()->likes->count());
-        $comment->unlike();
-        $this->assertEquals(0, $comment->fresh()->likes->count());
-    }
-
-    function test_a_comment_can_be_liked_once()
-    {
-        $comment = factory(Comment::class)->create();
-        $this->actingAs(factory(User::class)->create());
-        $comment->like();
-        $this->assertEquals(1, $comment->likes->count());
-        $comment->like();
-        $this->assertEquals(1, $comment->fresh()->likes->count());
-    }
-
-    public function test_a_comment_knows_if_it_has_been_liked()
-    {
-        $comment = factory(Comment::class)->create();
-        $this->assertFalse($comment->isLiked());
-        $this->actingAs(factory(User::class)->create());
-        $this->assertFalse($comment->isLiked());
-        $comment->like();
-        $this->assertTrue($comment->isLiked());
-    }
-
-    public function test_a_comment_knows_how_many_likes_it_has()
-    {
-        $this->assertEquals(0, $this->comment->likesCount());
-
-        factory(Like::class, 2)->create([
-            'likeable_id' => $this->comment->id,
-            'likeable_type' => get_class($this->comment),
-        ]);
-
-        $this->assertEquals(2, $this->comment->likesCount());
+        $this->assertArrayHasKey(HasLikes::class, $uses, 'Comment class must use HasLikes trait');
     }
 }
