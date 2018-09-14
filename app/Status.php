@@ -13,9 +13,14 @@ class Status extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function likes()
+    /*public function likes()
     {
         return $this->hasMany(Like::class);
+    }*/
+
+    public function likes()
+    {
+        return $this->morphMany('App\Like', 'likeable');
     }
 
     public function comments()
