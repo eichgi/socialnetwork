@@ -48215,7 +48215,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(70)
+  __webpack_require__(57)
 }
 var normalizeComponent = __webpack_require__(4)
 /* script */
@@ -48260,8 +48260,46 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 57 */,
-/* 58 */,
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(58);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("0cbb0a89", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b054e644\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LikeBtn.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b054e644\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LikeBtn.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.comments-like-btn[data-v-b054e644] {\n  font-size: 0.7em;\n  padding-left: 0;\n}\n.comments-like-btn i[data-v-b054e644] {\n    display: none;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
 /* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -48361,14 +48399,14 @@ var render = function() {
       _c("div", { staticClass: "d-flex align-items-center mb-3" }, [
         _c("img", {
           staticClass: "rounded mr-3 shadow-sm",
-          attrs: { width: "40px", src: _vm.status.user_avatar }
+          attrs: { width: "40px", src: _vm.status.user.avatar }
         }),
         _vm._v(" "),
         _c("div", [
           _c("h5", { staticClass: "mb-1" }, [
             _c("a", {
-              attrs: { href: _vm.status.user_link },
-              domProps: { textContent: _vm._s(_vm.status.user_name) }
+              attrs: { href: _vm.status.user.link },
+              domProps: { textContent: _vm._s(_vm.status.user.name) }
             })
           ]),
           _vm._v(" "),
@@ -48423,8 +48461,8 @@ var render = function() {
                 attrs: {
                   height: "34px",
                   width: "34px",
-                  src: comment.user_avatar,
-                  alt: comment.user_name
+                  src: comment.user.avatar,
+                  alt: comment.user.name
                 }
               }),
               _vm._v(" "),
@@ -48434,8 +48472,8 @@ var render = function() {
                 [
                   _c("div", { staticClass: "card border-0 shadow-sm" }, [
                     _c("div", { staticClass: "card-body p-2 text-secondary" }, [
-                      _c("a", { attrs: { href: comment.user_link } }, [
-                        _c("strong", [_vm._v(_vm._s(comment.user_name))])
+                      _c("a", { attrs: { href: comment.user.link } }, [
+                        _c("strong", [_vm._v(_vm._s(comment.user.name))])
                       ]),
                       _vm._v(
                         "\n                            " +
@@ -48628,51 +48666,6 @@ module.exports = {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(71);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("0cbb0a89", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b054e644\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LikeBtn.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b054e644\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LikeBtn.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.comments-like-btn[data-v-b054e644] {\n  font-size: 0.7em;\n  padding-left: 0;\n}\n.comments-like-btn i[data-v-b054e644] {\n    display: none;\n}\n", ""]);
-
-// exports
-
 
 /***/ })
 /******/ ]);
