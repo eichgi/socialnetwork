@@ -20,17 +20,26 @@
         </div>
         <div class="card-footer">
             <div v-for="comment in comments" class="mb-3">
-                <img class="rounded shadow-sm float-left mr-2" width="34px" :src="comment.user_avatar"
-                     :alt="comment.user_name">
-                <div class="card border-0 shadow-sm">
-                    <div class="card-body p-2 text-secondary">
-                        <a href="#"><strong>{{comment.user_name}}</strong></a>
-                        {{comment.body}}
+                <div class="d-flex">
+                    <img class="rounded shadow-sm mr-2" height="34px" width="34px" :src="comment.user_avatar"
+                         :alt="comment.user_name">
+                    <div class="flex-grow-1">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-2 text-secondary">
+                                <a href="#"><strong>{{comment.user_name}}</strong></a>
+                                {{comment.body}}
+                            </div>
+                        </div>
+                        <small class="badge badge-primary badge-pill py-1 px-2 mt-1 float-right"
+                               dusk="comment-likes-count">
+                            <i class="fa fa-thumbs-up"></i>
+                            {{comment.likes_count}}
+                        </small>
+                        <like-button class="comments-like-btn" dusk="comment-like-btn"
+                                     :url="`/comments/${comment.id}/likes`"
+                                     :model="comment"></like-button>
                     </div>
                 </div>
-
-                <span dusk="comment-likes-count">{{comment.likes_count}}</span>
-                <like-button dusk="comment-like-btn" :url="`/comments/${comment.id}/likes`" :model="comment"></like-button>
             </div>
             <form @submit.prevent="addComment" v-if="isAuthenticated">
                 <div class="d-flex align-items-center">

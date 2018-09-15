@@ -48084,7 +48084,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -48097,6 +48097,15 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__LikeBtn__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__LikeBtn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__LikeBtn__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -48206,7 +48215,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(57)
+  __webpack_require__(70)
 }
 var normalizeComponent = __webpack_require__(4)
 /* script */
@@ -48251,46 +48260,8 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 57 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(58);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("41a082b8", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b054e644\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LikeBtn.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b054e644\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LikeBtn.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 57 */,
+/* 58 */,
 /* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -48446,46 +48417,65 @@ var render = function() {
       { staticClass: "card-footer" },
       [
         _vm._l(_vm.comments, function(comment) {
-          return _c(
-            "div",
-            { staticClass: "mb-3" },
-            [
+          return _c("div", { staticClass: "mb-3" }, [
+            _c("div", { staticClass: "d-flex" }, [
               _c("img", {
-                staticClass: "rounded shadow-sm float-left mr-2",
+                staticClass: "rounded shadow-sm mr-2",
                 attrs: {
+                  height: "34px",
                   width: "34px",
                   src: comment.user_avatar,
                   alt: comment.user_name
                 }
               }),
               _vm._v(" "),
-              _c("div", { staticClass: "card border-0 shadow-sm" }, [
-                _c("div", { staticClass: "card-body p-2 text-secondary" }, [
-                  _c("a", { attrs: { href: "#" } }, [
-                    _c("strong", [_vm._v(_vm._s(comment.user_name))])
+              _c(
+                "div",
+                { staticClass: "flex-grow-1" },
+                [
+                  _c("div", { staticClass: "card border-0 shadow-sm" }, [
+                    _c("div", { staticClass: "card-body p-2 text-secondary" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _c("strong", [_vm._v(_vm._s(comment.user_name))])
+                      ]),
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(comment.body) +
+                          "\n                        "
+                      )
+                    ])
                   ]),
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(comment.body) +
-                      "\n                "
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("span", { attrs: { dusk: "comment-likes-count" } }, [
-                _vm._v(_vm._s(comment.likes_count))
-              ]),
-              _vm._v(" "),
-              _c("like-button", {
-                attrs: {
-                  dusk: "comment-like-btn",
-                  url: "/comments/" + comment.id + "/likes",
-                  model: comment
-                }
-              })
-            ],
-            1
-          )
+                  _vm._v(" "),
+                  _c(
+                    "small",
+                    {
+                      staticClass:
+                        "badge badge-primary badge-pill py-1 px-2 mt-1 float-right",
+                      attrs: { dusk: "comment-likes-count" }
+                    },
+                    [
+                      _c("i", { staticClass: "fa fa-thumbs-up" }),
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(comment.likes_count) +
+                          "\n                    "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("like-button", {
+                    staticClass: "comments-like-btn",
+                    attrs: {
+                      dusk: "comment-like-btn",
+                      url: "/comments/" + comment.id + "/likes",
+                      model: comment
+                    }
+                  })
+                ],
+                1
+              )
+            ])
+          ])
         }),
         _vm._v(" "),
         _vm.isAuthenticated
@@ -48639,6 +48629,51 @@ module.exports = {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(71);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("0cbb0a89", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b054e644\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LikeBtn.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b054e644\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./LikeBtn.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.comments-like-btn[data-v-b054e644] {\n  font-size: 0.7em;\n  padding-left: 0;\n}\n.comments-like-btn i[data-v-b054e644] {\n    display: none;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);
