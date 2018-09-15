@@ -41,4 +41,6 @@ Route::post('/statuses/{status}/comments', 'StatusCommentsController@store')
     ->name('statuses.comments.store')
     ->middleware('auth');
 
+Route::get('@{user}', 'UsersController@show')->name('users.show');
+
 Route::auth();
