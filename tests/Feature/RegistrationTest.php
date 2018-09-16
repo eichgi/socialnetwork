@@ -17,26 +17,162 @@ class RegistrationTest extends TestCase
     {
         //$this->withoutExceptionHandling();
 
-        $userData = [
-            'name' => 'ChatoPato',
-            'first_name' => 'Chato',
-            'last_name' => 'Pato',
-            'email' => 'chatosopatoso@gmail.com',
-            'password' => 'secret',
-            'password_confirmation' => 'secret',
-        ];
-
-        $response = $this->post(route('register'), $userData);
+        $response = $this->post(route('register'), $this->userValidData());
 
         $response->assertRedirect('/');
 
         $this->assertDatabaseHas('users', [
-            'name' => 'ChatoPato',
+            'name' => 'Chato Pato',
             'first_name' => 'Chato',
             'last_name' => 'Pato',
             'email' => 'chatosopatoso@gmail.com',
         ]);
 
         $this->assertTrue(Hash::check('secret', User::first()->password));
+    }
+
+    public function test_the_name_is_required()
+    {
+        $this->post(
+            route('register'),
+            $this->userValidData(['name' => null])
+        )->assertSessionHasErrors('name');
+    }
+
+    public function test_the_name_must_be_a_string()
+    {
+        $this->post(
+            route('register'),
+            $this->userValidData(['name' => 1234])
+        )->assertSessionHasErrors('name');
+    }
+
+    public function test_the_name_may_not_be_greater_than_255_characters()
+    {
+        $this->post(
+            route('register'),
+            $this->userValidData(['name' => str_random(256)])
+        )->assertSessionHasErrors('name');
+    }
+
+    public function test_the_first_name_is_required()
+    {
+        $this->post(
+            route('register'),
+            $this->userValidData(['first_name' => null])
+        )->assertSessionHasErrors('first_name');
+    }
+
+    public function test_the_first_name_must_be_a_string()
+    {
+        $this->post(
+            route('register'),
+            $this->userValidData(['first_name' => 1234])
+        )->assertSessionHasErrors('first_name');
+    }
+
+    public function test_the_first_name_may_not_be_greater_than_255_characters()
+    {
+        $this->post(
+            route('register'),
+            $this->userValidData(['first_name' => str_random(256)])
+        )->assertSessionHasErrors('first_name');
+    }
+
+    public function test_the_last_name_is_required()
+    {
+        $this->post(
+            route('register'),
+            $this->userValidData(['last_name' => null])
+        )->assertSessionHasErrors('last_name');
+    }
+
+    public function test_the_last_name_must_be_a_string()
+    {
+        $this->post(
+            route('register'),
+            $this->userValidData(['last_name' => 1234])
+        )->assertSessionHasErrors('last_name');
+    }
+
+    public function test_the_last_name_may_not_be_greater_than_255_characters()
+    {
+        $this->post(
+            route('register'),
+            $this->userValidData(['last_name' => str_random(256)])
+        )->assertSessionHasErrors('last_name');
+    }
+
+    public function test_the_email_is_required()
+    {
+        $this->post(
+            route('register'),
+            $this->userValidData(['email' => null])
+        )->assertSessionHasErrors('email');
+    }
+
+    public function test_the_email_must_be_a_valid_email_address()
+    {
+        $this->post(
+            route('register'),
+            $this->userValidData(['email' => 'invalid@email'])
+        )->assertSessionHasErrors('email');
+    }
+
+    public function test_the_email_must_be_unique()
+    {
+        factory(User::class)->create(['email' => 'hiramg90@gmail.com']);
+        $this->post(
+            route('register'),
+            $this->userValidData(['email' => 'hiramg90@gmail.com'])
+        )->assertSessionHasErrors('email');
+    }
+
+    public function test_the_password_is_required()
+    {
+        $this->post(
+            route('register'),
+            $this->userValidData(['password' => null])
+        )->assertSessionHasErrors('password');
+    }
+
+    public function test_the_password_must_be_a_string()
+    {
+        $this->post(
+            route('register'),
+            $this->userValidData(['password' => 1234])
+        )->assertSessionHasErrors('password');
+    }
+
+    public function test_the_password_must_be_at_least_6_characters()
+    {
+        $this->post(
+            route('register'),
+            $this->userValidData(['password' => str_random(5)])
+        )->assertSessionHasErrors('password');
+    }
+
+    public function test_the_password_must_be_confirmed()
+    {
+        $this->post(
+            route('register'),
+            $this->userValidData(['password' => 'secret', 'password_confirmation' => 'secret'])
+        )->assertSessionHasErrors('password');
+    }
+
+    /**
+     * @param array $overrides
+     * @return array
+     */
+    public function userValidData($overrides = []): array
+    {
+        return array_merge([
+            'name' => 'Chato Pato',
+            'first_name' => 'Chato',
+            'last_name' => 'Pato',
+            'email' => 'chatosopatoso@gmail.com',
+            'password' => 'secret',
+            'password_confirmation' => 'secret',
+        ], $overrides);
     }
 }
