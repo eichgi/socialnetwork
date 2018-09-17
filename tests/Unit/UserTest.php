@@ -25,5 +25,6 @@ class UserTest extends TestCase
     {
         $user = factory(User::class)->make();
         $this->assertEquals('https://aprendible.com/images/default-avatar.jpg', $user->avatar());
+        $this->assertEquals('https://aprendible.com/images/default-avatar.jpg', $user->avatar);
     }
 }

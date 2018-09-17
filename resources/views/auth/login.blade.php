@@ -3,6 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 mx-auto">
+                @include('partials.validation-errors')
                 <div class="card border-0 bg-light px-4 py-2">
                     <form action="{{route('login')}}" method="POST">
                         <div class="card-body">
@@ -15,7 +16,7 @@
                                 <label>Contraseña:</label>
                                 <input class="form-control" type="password" name="password">
                             </div>
-                            <button id="login-btn" class="btn btn-primary btn-block">Login</button>
+                            <button dusk="login-btn" class="btn btn-primary btn-block">Login</button>
                         </div>
                     </form>
                 </div>

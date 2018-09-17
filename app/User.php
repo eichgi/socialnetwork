@@ -9,22 +9,12 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $guarded = [];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
+    protected $appends = ['avatar'];
 
     public function getRouteKeyName()
     {
@@ -41,4 +31,8 @@ class User extends Authenticatable
         return 'https://aprendible.com/images/default-avatar.jpg';
     }
 
+    public function getAvatarAttribute()
+    {
+        return $this->avatar();
+    }
 }
