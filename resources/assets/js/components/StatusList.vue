@@ -15,13 +15,16 @@
         components: {
             StatusListItem,
         },
+        props: {
+            url: String,
+        },
         data() {
             return {
                 statuses: [],
             }
         },
         mounted() {
-            axios.get('/statuses')
+            axios.get(this.getUrl)
                 .then(res => {
                     this.statuses = res.data.data;
                 })
@@ -33,6 +36,11 @@
                 console.log(status);
                 this.statuses.unshift(status);
             });
+        },
+        computed: {
+            getUrl() {
+                return this.url || '/statuses';
+            }
         },
     }
 </script>

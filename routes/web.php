@@ -43,4 +43,9 @@ Route::post('/statuses/{status}/comments', 'StatusCommentsController@store')
 
 Route::get('@{user}', 'UsersController@show')->name('users.show');
 
+Route::get('/users/{user}/statuses', 'UsersStatusesController@index')->name('users.statuses.index');
+
+Route::post('/friendships/{recipient}', 'FriendshipsController@store')->name('friendship.store');
+Route::post('/request-friendships/{sender}', 'RequestFriendshipsController@store')->name('request-friendships.store');
+
 Route::auth();
