@@ -39,7 +39,7 @@ class FriendshipsController extends Controller
         Friendship::create([
             'sender_id' => auth()->id(),
             'recipient_id' => $recipient->id,
-            'accepted' => false,
+            'status' => 'pending',
         ]);
     }
 
@@ -80,11 +80,14 @@ class FriendshipsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param User $recipient
+     * @return void
      */
-    public function destroy($id)
+    public function destroy(User $recipient)
     {
-        //
+        Friendship::where([
+            'sender_id' => auth()->id(),
+            'recipient_id' => $recipient->id,
+        ])->delete();
     }
 }

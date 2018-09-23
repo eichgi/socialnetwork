@@ -6,7 +6,7 @@ use App\Friendship;
 use App\User;
 use Illuminate\Http\Request;
 
-class RequestFriendshipsController extends Controller
+class AcceptFriendshipsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -39,8 +39,7 @@ class RequestFriendshipsController extends Controller
         Friendship::create([
             'sender_id' => $sender->id,
             'recipient_id' => auth()->id(),
-            'accepted' => false,
-        ])->update(['accepted' => true]);
+        ])->update(['status' => 'accepted']);
     }
 
     /**
@@ -80,11 +79,15 @@ class RequestFriendshipsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @param User $sender
+     * @return void
      */
-    public function destroy($id)
+    public function destroy(User $sender)
     {
-        //
+        Friendship::where([
+            'sender_id' => $sender->id,
+            'recipient_id' => auth()->id(),
+            'status' => 'pending'
+        ])->update(['status' => 'denied']);
     }
 }
